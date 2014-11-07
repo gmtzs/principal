@@ -6,13 +6,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 
-<link rel="stylesheet" href="<c:url value="/css/style.css"/>" />
 <script type=text/javascript src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type=text/javascript src="css/functions.js"></script>
+<script type=text/javascript src="resources/jquery.blockUI.js"></script>
+
 </head>
 <body>
-	<div id="login">
-		Cuerpo de la pagina 
+	<div id="body">
+		Pagina principal
 	</div>
 </body>
 </html>
