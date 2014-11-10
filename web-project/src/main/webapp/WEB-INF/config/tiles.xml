@@ -12,6 +12,10 @@
     </definition>  
    
     <definition extends="base" name="principal">  
+        <put-attribute name="body" value="/WEB-INF/views/index.jsp"></put-attribute>  
+    </definition>  
+    
+    <definition extends="base" name="usuarios">  
         <put-attribute name="body" value="/WEB-INF/views/addUser.jsp"></put-attribute>  
     </definition>  
       

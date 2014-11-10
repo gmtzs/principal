@@ -12,7 +12,7 @@
 </head>
 <body>
 	<div id="body">
-		USUARIOS
+		INDEX
 	</div>
 </body>
 </html>

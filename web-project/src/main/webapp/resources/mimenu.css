@@ -103,7 +103,7 @@
 
 .menu li:hover > ul li {
 	height: 36px;
-	width:200px;
+	width:500px;
 	overflow: visible;
 	padding: 0;
 }

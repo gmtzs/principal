@@ -1,8 +1,13 @@
 package mx.com.security;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import mx.com.security.dto.User;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,10 +18,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 
 @Controller
+@Scope("request")
 public class SecurityController {
 	
 	protected final Logger logger = Logger.getLogger(getClass());
 	
+	@Autowired
+	private User user;
 	
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	public ModelAndView  init(){
@@ -41,7 +49,8 @@ public class SecurityController {
 //	}
 	
 	@RequestMapping(value="/Sign.htm", method=RequestMethod.POST)
-	public ModelAndView  sign(@ModelAttribute("user") User user, BindingResult result){
+	public ModelAndView  sign(@ModelAttribute("user") User user, BindingResult result, HttpServletRequest request){
+		HttpSession session = request.getSession();
 		
 		logger.info("User "+ user.getUserName() + " pwd " + user.getPwd());
 		for (int i = 0; i < 1000; i++) {
@@ -49,6 +58,22 @@ public class SecurityController {
 			
 		}
 		return new ModelAndView("principal");
+	}
+	
+	@RequestMapping(value="/usuario.htm", method=RequestMethod.GET)
+	public ModelAndView  admonUsuarios(HttpServletRequest request){
+		
+		logger.info("Usuario en la sesion" + user);
+		return new ModelAndView("usuarios");
+	}
+	
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 	
 	
