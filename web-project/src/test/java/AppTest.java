@@ -11,20 +11,20 @@ public class AppTest {
 	
 	public static void main(String[] args) {
 		String path = "\\Oracle\\Middleware\\user_projects\\domains\\cayte_dev_domain\\";
-		File file = new File(path + "holamundo.txt");
-		File file_test = new File(path + "holamundo2.txt");
+		File file = new File(path + "file: holamundo.txt");
+		File file_test = new File(path + "file_test: holamundo2.txt");
 		try {
 			file.createNewFile();	
 			logger.info("Inicia el renombrado del archivo");
 			boolean result = file.renameTo(file_test);
-			logger.info(file_test.getCanonicalPath());
-			logger.info(file.getCanonicalPath() + " resultado: " + result );
+			logger.info("File test: " + file_test.getCanonicalPath());
+			logger.info("File: " + file.getCanonicalPath() + " resultado: " + result );
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		new AppTest().executeOperation();  
+		new AppTest().executeOperation();
+		logger.info("Finaliza creacion de archivo");
 	}
 	
 	public void displaySystemProperties(){
