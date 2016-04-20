@@ -15,7 +15,7 @@ public class AppTest {
 		File file_test = new File(path + "holamundo2.txt");
 		try {
 			file.createNewFile();	
-			
+			logger.info("Inicia el renombrado del archivo");
 			boolean result = file.renameTo(file_test);
 			logger.info(file_test.getCanonicalPath());
 			logger.info(file.getCanonicalPath() + " resultado: " + result );
