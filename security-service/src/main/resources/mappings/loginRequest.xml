@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<loginRequest xmlns="http://mycompany.com/test/security">
+		<userName>userAccount</userName>
+		<password>pa$$w0rd</password>
+		<system>My System</system>
+	</loginRequest>  

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://mycompany.com/test/security" xmlns:security="http://mycompany.com/test/security">
+  <xs:element name="loginRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="security:userName"/>
+        <xs:element ref="security:password"/>
+        <xs:element ref="security:system"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="userName" type="xs:NCName"/>
+  <xs:element name="password" type="xs:string"/>
+  <xs:element name="system" type="xs:string"/>
+  <xs:element name="loginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="security:token"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="token" type="xs:string"/>
+</xs:schema>

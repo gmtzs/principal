@@ -51,11 +51,12 @@ public class SecurityController {
 	public ModelAndView  sign(@ModelAttribute("user") User user, BindingResult result, HttpServletRequest request){
 		HttpSession session = request.getSession();
 		
-		logger.info("User "+ user.getUserName() + " pwd " + user.getPwd());
-		for (int i = 0; i < 1000; i++) {
+		
+		for (int i = 0; i < 100; i++) {
 			logger.info("Contando" +i);
 			
 		}
+		logger.info("User "+ user.getUserName() + " pwd " + user.getPwd());
 		return new ModelAndView("principal");
 	}
 	

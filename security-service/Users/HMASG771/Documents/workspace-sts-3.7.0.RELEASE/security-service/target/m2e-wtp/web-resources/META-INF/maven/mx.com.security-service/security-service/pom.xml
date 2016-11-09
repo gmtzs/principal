@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>mx.com.security-service</groupId>
+    <artifactId>security-service</artifactId>
+    <packaging>war</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>security-service Spring-WS Application</name>
+    <url>http://www.springframework.org/spring-ws</url>
+    <build>
+        <finalName>security-service</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tomcat-maven-plugin</artifactId>
+                <version>1.1</version>
+            </plugin>
+             <plugin>
+		        <groupId>com.thaiopensource.trang</groupId>
+					<artifactId>trang-maven-plugin</artifactId>
+					<version>1.0.7</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>rnc2xsd</goal>
+							</goals>
+							<phase>generate-sources</phase>
+							<configuration>
+								<dir>schemas</dir>
+								<includes>
+									<include>*.rnc</include>
+								</includes>
+								<outputDir>target/generated-sources/trang</outputDir>
+							</configuration>
+						</execution>
+					</executions>
+		      </plugin>
+		      <plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jaxb2-maven-plugin</artifactId>
+				<version>1.3</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>xjc</goal>
+						</goals>
+						<phase>generate-sources</phase>
+					</execution>
+				</executions>
+				<configuration>
+					<verbose>false</verbose>
+					<explicitAnnotation>true</explicitAnnotation>
+					<clearOutputDir>false</clearOutputDir>
+					<schemaDirectory>target/generated-sources/trang</schemaDirectory>
+					<schemaFiles>testsequence.xsd</schemaFiles>
+					<bindingDirectory>./</bindingDirectory>
+					<bindingFiles>schemas/bindings.xjb</bindingFiles>
+				</configuration>
+			</plugin>
+            
+            
+        </plugins>
+    </build>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.ws</groupId>
+            <artifactId>spring-ws-core</artifactId>
+            <version>2.1.4.RELEASE</version>
+        </dependency>
+    </dependencies>
+</project>
