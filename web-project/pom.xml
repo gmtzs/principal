@@ -8,7 +8,8 @@
   <name>web-project Maven Webapp</name>
   <url>http://maven.apache.org</url>
   <properties>
-  	<spring.version>3.2.4.RELEASE</spring.version>
+  	<spring.version>3.2.18.RELEASE</spring.version>
+  	<spring.security.version>3.2.3.RELEASE</spring.security.version>
   	<jackson.version>1.9.10</jackson.version>
   	<tiles.version>3.0.3</tiles.version>
   </properties>
@@ -38,6 +39,20 @@
 		<artifactId>spring-webmvc</artifactId>
 		<version>${spring.version}</version>
 	</dependency> 
+	
+	<!-- Spring Security -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>${spring.security.version}</version>
+	</dependency>
+	
 	<!-- JSTL --> 
 	<dependency>
 		<groupId>javax.servlet</groupId>
@@ -80,6 +95,7 @@
 		<version>4.2.0.Final</version>
 	</dependency>
 	
+	<!-- Tiles Framework -->
 	<dependency>
 		<groupId>org.apache.tiles</groupId>
 		<artifactId>tiles-jsp</artifactId>

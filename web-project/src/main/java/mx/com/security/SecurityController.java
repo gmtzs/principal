@@ -11,6 +11,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import mx.com.security.dto.User;
@@ -22,60 +23,40 @@ public class SecurityController {
 	
 	protected final Logger logger = Logger.getLogger(getClass());
 	
-	@Autowired
-	private User user;
-	
 	@RequestMapping(value="/", method=RequestMethod.GET)
-	public ModelAndView  init(){
-		return new ModelAndView("Sign","user", new User());
-	}
-	
-	@RequestMapping(value="/Sign.htm", method=RequestMethod.GET )
-	public ModelAndView sign(){
-		logger.info("Paso por aqui");
-		return new ModelAndView("Sign","user", new User());
-	}
-	
-//	@RequestMapping(value="/Sign.htm", method=RequestMethod.POST)
-//	public ModelAndView  sign(@ModelAttribute("user") User user, BindingResult result){
-//		
-//		logger.info("User "+ user.getUserName() + " pwd " + user.getPwd());
-//		for (int i = 0; i < 1000; i++) {
-//			logger.info("Contando" +i);
-//			
-//		}
-//		return new ModelAndView("filePicker");
-//	}
-	
-	@RequestMapping(value="/Sign.htm", method=RequestMethod.POST)
-	public ModelAndView  sign(@ModelAttribute("user") User user, BindingResult result, HttpServletRequest request){
-		HttpSession session = request.getSession();
-		
-		
-		for (int i = 0; i < 100; i++) {
-			logger.info("Contando" +i);
+	public ModelAndView  init(
+			@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "logout", required = false) String logout){
+		logger.info("Inicia aplicacion");
+		ModelAndView model = new ModelAndView("login");
+		if (error != null) {
+			logger.info("error");
+			model.addObject("msg", "Invalid username and password!");
 			
 		}
-		logger.info("User "+ user.getUserName() + " pwd " + user.getPwd());
-		return new ModelAndView("principal");
+
+		if (logout != null) {
+			logger.info("succesfull!!!");
+			model.addObject("msg", "You've been logged out successfully.");
+			
+		}
+		return model;
 	}
 	
-	@RequestMapping(value="/usuario.htm", method=RequestMethod.GET)
+	//Spring Security see this :
+		@RequestMapping(value = "/authprincipal", method = RequestMethod.GET)
+		public ModelAndView login() {
+
+			return new ModelAndView("principal");
+		}
+
+	
+	@RequestMapping(value="/authusuario", method=RequestMethod.GET)
 	public ModelAndView  admonUsuarios(HttpServletRequest request){
-		
-		logger.info("Usuario en la sesion" + user);
 		return new ModelAndView("usuarios");
 	}
 	
 	
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
 	
 	
-
 }

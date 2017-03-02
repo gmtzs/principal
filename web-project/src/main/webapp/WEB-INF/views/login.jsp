@@ -6,27 +6,68 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/style.css" />
-<script type=text/javascript src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script type=text/javascript src="resources/functions.js"></script>
-<script type=text/javascript src="resources/jquery.blockUI.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div id="login">
-		<form:form action="Sign.htm" modelAttribute="user" method="POST" >
-			<h1>Log In</h1>
-			<fieldset id="inputs">
-				<form:input path="userName" placeholder="U s u a r i o" required="true" /> 
-				<form:password path="pwd" placeholder="C o n t r a s e ñ a"  required="true" />
-			</fieldset>
-			<fieldset id="actions">
-				<input type="submit" id="submit" value="Log in"> <a href="">Forgot
-					your password?</a><a href="">Register</a>
-			</fieldset>
-		</form:form>
+	<div class="container">
+		<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-4 col-md-offset-4 col-sm-8 col-sm-offset-2" >
+			
+			<div class="panel panel-info" >
+				
+				<div class="panel-heading">
+					<div class="panel-title">Log In</div>
+				</div>
+
+				<div style="padding-top:30px" class="panel-body">
+				
+					<form action="j_spring_security_check" method="POST" role="form" >
+					
+					<c:if test="${ msg != null}">
+						
+							<div class="alert alert-danger alert-dismissable fade in">
+								<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+								${msg}
+							</div>
+						
+					</c:if>
+					
+					<div style="margin-bottom: 25px" class="input-group">
+						 <span class="input-group-addon">
+							<i class="glyphicon glyphicon-user"> </i>
+						</span>
+						<input  type="text" name="userName" class="form-control" placeholder="Usuario" required="true"  />
+					</div>
+						
+					<div style="margin-bottom: 25px" class="input-group">
+						<div class="input-group-addon">
+							<i class="glyphicon glyphicon-eye-open"></i>
+						</div>		
+						<input  type="password" name="pwd" class="form-control" placeholder="Contraseña"  required="true" />
+					</div>	
+					
+					<div style="margin-top:10px" class="form-group">
+						<div class="col-sm-12 controls" style="padding-left: 30%;">
+							<button type="submit" id="btn-login" value="Log in" class="btn btn-primary" > Aceptar</button>
+						</div>	
+					</div>
+					<input type="hidden" name="${_csrf.parameterName}"	value="${_csrf.token}" />
+					
+					</form>
+						
+				</div>	
+					
+						<a href="#"> Forgot your password?</a>
+						<a href="#">Register</a>
+					
+					
+			</div>
+		</div>
 	</div>
 	<div id="domMessage" style="display: none;">
 		<h1>We are processing your request. Please be patient.</h1>
 	</div>
+	
 </body>
 </html>

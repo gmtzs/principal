@@ -22,7 +22,7 @@
 			<li><a href="#">Usuarios</a>
 				<ul>
 				
-					<li><a href="usuario.htm" class="documents">Panel de Administración</a></li>
+					<li><a href="authusuario.htm" class="documents">Panel de Administración</a></li>
 					
 				</ul>
 			</li>
