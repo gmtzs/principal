@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
 Built-By: HMASG771
-Build-Jdk: 1.6.0_38
+Build-Jdk: 1.8.0_25
 Created-By: Maven Integration for Eclipse
 
